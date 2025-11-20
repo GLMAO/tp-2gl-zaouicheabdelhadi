@@ -1,7 +1,7 @@
 package com.polytech.tp;
 
-public class CoursEnLigne extends CoursDecorator {
-    CoursEnLigne(ICours cours) {
+public class CoursEnAnglais extends CoursDecorator {
+    CoursEnAnglais(ICours cours) {
         //TODO: Implémenter le reste ...
         super(cours);
     }
@@ -10,7 +10,7 @@ public class CoursEnLigne extends CoursDecorator {
     public String getDescription() {
         // TODO Auto-generated method stub
         
-        return super.getDescription() + " (En ligne)";
+        return super.getDescription() + " (En Anglais)";
         
     }
 

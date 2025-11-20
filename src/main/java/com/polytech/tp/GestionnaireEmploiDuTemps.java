@@ -10,7 +10,9 @@ public class GestionnaireEmploiDuTemps implements Subject{
 
     //implementer methode attach
     public void attach(Observer o) {
-        observers.add(o);
+        if (!observers.contains(o)) {
+            observers.add(o);
+        }
     }
 
     //implemnter detach
@@ -46,6 +48,7 @@ public class GestionnaireEmploiDuTemps implements Subject{
 
     public void setChangement(String string) {
         // TODO Auto-generated method stub
+        notifyObservers(string);
         throw new UnsupportedOperationException("Unimplemented method 'setChangement'");
     }
 }
