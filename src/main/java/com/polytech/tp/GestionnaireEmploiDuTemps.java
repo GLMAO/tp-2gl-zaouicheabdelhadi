@@ -3,8 +3,27 @@ package com.polytech.tp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GestionnaireEmploiDuTemps {
+public class GestionnaireEmploiDuTemps implements Subject{
+     
+    private List<Observer> observers = new ArrayList<>();
     private List<ICours> listeCours = new ArrayList<>();
+
+    //implementer methode attach
+    public void attach(Observer o) {
+        observers.add(o);
+    }
+
+    //implemnter detach
+    public void detach(Observer o) {
+        observers.remove(o);
+    }
+
+    //implementer notify()
+    public void notifyObservers() {
+        for (Observer o : observers) {
+            o.update(state);
+        }
+    }
 
     public void ajouterCours(ICours cours) {
         this.listeCours.add(cours);
