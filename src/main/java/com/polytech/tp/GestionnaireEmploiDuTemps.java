@@ -19,7 +19,7 @@ public class GestionnaireEmploiDuTemps implements Subject{
     }
 
     //implementer notify()
-    public void notifyObservers() {
+    public void notifyObservers(String state) {
         for (Observer o : observers) {
             o.update(state);
         }
@@ -29,12 +29,19 @@ public class GestionnaireEmploiDuTemps implements Subject{
         this.listeCours.add(cours);
         System.out.println("Nouveau cours ajouté : " + cours.getDescription());
         // TODO: C'est ici qu'il faudrait notifier les étudiants (Observer pattern)
+        for (Observer o : observers) {
+            if (o instanceof Etudiant) {   // Vérifie que l'observateur est un Etudiant
+                o.update(cours.getDescription());
+            }
+        }
+        
     }
 
     public void modifierCours(ICours cours, String message) {
         // Logique de modification...
         System.out.println("Cours modifié : " + message);
         // TODO: Notifier les observateurs ici aussi
+        notifyObservers(message);
     }
 
     public void setChangement(String string) {
